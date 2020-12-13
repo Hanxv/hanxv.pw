@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>博客优化 | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="博客优化,Hexo," />
+  
+
+  <meta name="description" content="并不会前端，不过弄博客倒是有一段时间的历史了。 博客系统选择一个自己喜欢的博客系统，然后才可以对应的对其作出相应的优化。 WordPresssWordPress 是一个使用 PHP 语言开发的博客系统，用户可以在支持PHP和MySQL数据库的服务器上架设属于自己的博客。 这个博客系统历史悠久，各方面都比较完善，比如主题、插件。对于它的优化，无非就是全站静态化了。 JekyllJekyll是一个简单">
+<meta name="keywords" content="博客优化,Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客优化">
+<meta property="og:url" content="https://hanxv.pw/2016/blog.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="并不会前端，不过弄博客倒是有一段时间的历史了。 博客系统选择一个自己喜欢的博客系统，然后才可以对应的对其作出相应的优化。 WordPresssWordPress 是一个使用 PHP 语言开发的博客系统，用户可以在支持PHP和MySQL数据库的服务器上架设属于自己的博客。 这个博客系统历史悠久，各方面都比较完善，比如主题、插件。对于它的优化，无非就是全站静态化了。 JekyllJekyll是一个简单">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客优化">
+<meta name="twitter:description" content="并不会前端，不过弄博客倒是有一段时间的历史了。 博客系统选择一个自己喜欢的博客系统，然后才可以对应的对其作出相应的优化。 WordPresssWordPress 是一个使用 PHP 语言开发的博客系统，用户可以在支持PHP和MySQL数据库的服务器上架设属于自己的博客。 这个博客系统历史悠久，各方面都比较完善，比如主题、插件。对于它的优化，无非就是全站静态化了。 JekyllJekyll是一个简单">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#博客系统"><span class="toc-text">博客系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WordPresss"><span class="toc-text">WordPresss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jekyll"><span class="toc-text">Jekyll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-text">Hexo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#速度优化"><span class="toc-text">速度优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS"><span class="toc-text">DNS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-text">Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Coding"><span class="toc-text">Coding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlab"><span class="toc-text">Gitlab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CloudFlare"><span class="toc-text">CloudFlare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qiniu、upyun"><span class="toc-text">Qiniu、upyun</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS"><span class="toc-text">HTTPS</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-blog" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">博客优化</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.11.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>并不会前端，不过弄博客倒是有一段时间的历史了。</p>
+<h1 id="博客系统"><a href="#博客系统" class="headerlink" title="博客系统"></a>博客系统</h1><p>选择一个自己喜欢的博客系统，然后才可以对应的对其作出相应的优化。</p>
+<h2 id="WordPresss"><a href="#WordPresss" class="headerlink" title="WordPresss"></a>WordPresss</h2><p>WordPress 是一个使用 PHP 语言开发的博客系统，用户可以在支持PHP和MySQL数据库的服务器上架设属于自己的博客。</p>
+<p>这个博客系统历史悠久，各方面都比较完善，比如主题、插件。对于它的优化，无非就是全站静态化了。</p>
+<h2 id="Jekyll"><a href="#Jekyll" class="headerlink" title="Jekyll"></a>Jekyll</h2><p>Jekyll是一个简单的静态博客生成工具，不需要数据库支持。但是配合第三方服务,例如 Disqus。</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p>Hexo 是一个快速、简洁且高效的博客框架。 Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p>本博客也是使用 Hexo 框架生成的，因为它的使用可以直接命令行操作，感觉比较方便。</p>
+<h1 id="速度优化"><a href="#速度优化" class="headerlink" title="速度优化"></a>速度优化</h1><h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><p>对于 DNS 来说，选择一个合适的是比较重要的。在大陆，国外的 DNS 解析都比较慢，所以选择一个大陆的 DNS 至关重要。推荐 CloudXNS ，当然，腾讯的 DNSPod 也不错。不过本博客已经被腾讯产品全线报毒。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p>如果你选择的是静态博客，并托管在 Github 上的话。那么，对于 Github 也有一些处理的哦。</p>
+<p>因为 <code>*.github.io</code> 有 CDN，选择一个大陆访问速度快的 IP 去解析，应该会快一点的哦。</p>
+<p>怎么选择呢？访问 ipip.net 去 ping 测试下延迟吧，本站是根解析到 151.101.100.133，www 还是 CNAME 到 hanxv.github.io 上了的。</p>
+<h2 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h2><p>很多人应该都还记得 GitCafe 吧，现在它好像被 Coding 收购了，Coding 也提供 Pages 功能。它的 Pages 服务在香港伺候器上，速度还算是可以吧。支持 https，Let’s Encrypt 证书。</p>
+<p>有需要的话，可以使用 CloudXNS 分别解析到 Github 和 Coding 上。</p>
+<h2 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h2><p>这个服务支持自动部署、私有仓库、https 等，不过速度感人，可以考虑使用它然后套 CDN 。</p>
+<h2 id="CloudFlare"><a href="#CloudFlare" class="headerlink" title="CloudFlare"></a>CloudFlare</h2><p>这个是一个免费 CDN 服务，如果不是在大陆，使用这个 CDN 基本上满足所有地区的速度需求，当然特殊地区另当别论。它强制将域名 NS 解析过去，因为这个 CDN 本身的最大作用就是防 DDoS。</p>
+<p>支持 https ，但是免费额度里面，不支持自定义证书，支持 HSTS。</p>
+<h2 id="Qiniu、upyun"><a href="#Qiniu、upyun" class="headerlink" title="Qiniu、upyun"></a>Qiniu、upyun</h2><p>这是大陆的云储存服务，都有一定的免费额度。可以将一些静态资源放里面，加快博客访问速度。</p>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><p>对于 https，Github 目前还不支持自定义域名启用 https，不过趋势所在，只是时间问题罢了。</p>
+<p>Coding 和 Gitlab 已经支持了 https，一定要用 Github 和 https 的话，套 CDN 吧。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

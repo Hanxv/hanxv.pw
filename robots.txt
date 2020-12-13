@@ -1,0 +1,54 @@
+# Baidu
+User-agent: Baiduspider
+Disallow: /
+User-agent: Baiduspider-image
+Disallow: /
+User-agent: Baiduspider-mobile
+Disallow: /
+User-agent: Baiduspider-video
+Disallow: /
+User-agent: Baiduspider-news
+Disallow: /
+
+# Sogou
+User-agent: Sogou web spider
+Disallow: /
+User-agent: Sogou inst spider
+Disallow: /
+User-agent: Sogou spider2
+Disallow: /
+User-agent: Sogou blog
+Disallow: /
+User-agent: Sogou News Spider
+Disallow: /
+User-agent: Sogou Orion spider
+Disallow: /
+
+User-agent: ChinasoSpider
+Disallow: /
+
+User-agent: Sosospider
+Disallow: /
+
+User-agent: Yisouspider
+Disallow: /
+
+User-agent: YYspider
+Disallow: /
+
+User-agent: EasouSpider
+Disallow: /
+
+User-agent: 360Spider 
+Disallow: /
+
+User-agent: YoudaoBot
+Disallow: /
+
+User-agent: JikeSpider
+Disallow: /
+
+User-agent: *
+Disallow: 
+
+Sitemap: https://hanxv.pw/sitemap.xml

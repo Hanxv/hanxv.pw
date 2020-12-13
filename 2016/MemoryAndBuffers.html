@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>内存与缓冲区 | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="计算器基础,内存溢出,内存泄漏,缓冲区溢出," />
+  
+
+  <meta name="description" content="内存溢出要求分配的内存超出了系统目前所能分配给你的，系统不能满足需求，于是产生溢出。 内存泄漏向系统申请的内存使用完了以后没有释放，结果那块内存的地址弄丢了，而系统也不能再次将它分配给需要的程序。  常发性内存泄漏。发生内存泄漏的代码会被多次执行到，每次被执行的时候都会导致一块内存泄漏。  偶发性内存泄漏。发生内存泄漏的代码只有在某些特定环境或操作过程下才会发生。  一次性内存泄漏。发生内存泄漏的">
+<meta name="keywords" content="计算器基础,内存溢出,内存泄漏,缓冲区溢出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存与缓冲区">
+<meta property="og:url" content="https://hanxv.pw/2016/MemoryAndBuffers.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="内存溢出要求分配的内存超出了系统目前所能分配给你的，系统不能满足需求，于是产生溢出。 内存泄漏向系统申请的内存使用完了以后没有释放，结果那块内存的地址弄丢了，而系统也不能再次将它分配给需要的程序。  常发性内存泄漏。发生内存泄漏的代码会被多次执行到，每次被执行的时候都会导致一块内存泄漏。  偶发性内存泄漏。发生内存泄漏的代码只有在某些特定环境或操作过程下才会发生。  一次性内存泄漏。发生内存泄漏的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存与缓冲区">
+<meta name="twitter:description" content="内存溢出要求分配的内存超出了系统目前所能分配给你的，系统不能满足需求，于是产生溢出。 内存泄漏向系统申请的内存使用完了以后没有释放，结果那块内存的地址弄丢了，而系统也不能再次将它分配给需要的程序。  常发性内存泄漏。发生内存泄漏的代码会被多次执行到，每次被执行的时候都会导致一块内存泄漏。  偶发性内存泄漏。发生内存泄漏的代码只有在某些特定环境或操作过程下才会发生。  一次性内存泄漏。发生内存泄漏的">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内存溢出"><span class="toc-text">内存溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存泄漏"><span class="toc-text">内存泄漏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓冲区溢出"><span class="toc-text">缓冲区溢出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓冲区溢出攻击"><span class="toc-text">缓冲区溢出攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#植入"><span class="toc-text">植入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用已存在的代码"><span class="toc-text">利用已存在的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制程序转移"><span class="toc-text">控制程序转移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#活动纪录"><span class="toc-text">活动纪录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数指针"><span class="toc-text">函数指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码植入和流程控"><span class="toc-text">代码植入和流程控</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-MemoryAndBuffers" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">内存与缓冲区</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h1><p>要求分配的内存超出了系统目前所能分配给你的，系统不能满足需求，于是产生溢出。</p>
+<h1 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h1><p>向系统申请的内存使用完了以后没有释放，结果那块内存的地址弄丢了，而系统也不能再次将它分配给需要的程序。</p>
+<ol>
+<li><p>常发性内存泄漏。<br>发生内存泄漏的代码会被多次执行到，每次被执行的时候都会导致一块内存泄漏。</p>
+</li>
+<li><p>偶发性内存泄漏。<br>发生内存泄漏的代码只有在某些特定环境或操作过程下才会发生。</p>
+</li>
+<li><p>一次性内存泄漏。<br>发生内存泄漏的代码只会被执行一次，或者由于算法上的缺陷，导致总会有一块仅且一块内存发生泄漏。</p>
+</li>
+<li><p>隐式内存泄漏。<br>程序在运行过程中不停的分配内存，但是直到结束的时候才释放内存。</p>
+</li>
+</ol>
+<h1 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h1><p>计算器向缓冲区内填充数据位数时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。造成缓冲区溢出的原因是程序中没有仔细检查用户输入的参数。</p>
+<h1 id="缓冲区溢出攻击"><a href="#缓冲区溢出攻击" class="headerlink" title="缓冲区溢出攻击"></a>缓冲区溢出攻击</h1><p>往缓冲区中填东西造成它溢出一般只会出现 Segmentation fault，而不能达到攻击的目的。最常见的手段是通过制造缓冲区溢出使程序运行一个用户 shell，再通过 shell 执行命令。如果该程序有 root 执行权限的话，就获得了一个有 root 权限的 shell，可以对系统进行任意操作了。缓冲区溢出攻击之所以成为一种常见安全攻击手段其原因在于缓冲区溢出漏洞太普遍了，并且易于实现。而且，缓冲区溢出成为远程攻击的主要手段其原因在于缓冲区溢出漏洞给予了所想要的一切：植入并且执行攻击代码。被植入的攻击代码以一定的权限运行有缓冲区溢出漏洞的程序，从而得到控制权。</p>
+<h2 id="植入"><a href="#植入" class="headerlink" title="植入"></a>植入</h2><p>向被攻击的程序输入一个字符串，程序会把这个字符串放到缓冲区里。这个字符串包含的数据是可以在这个被攻击的硬件平台上运行的指令序列。用被攻击程序的缓冲区来存放攻击代码，缓冲区可以设在任何地方：堆栈（stack，自动变量）、堆（heap，动态分配的内存区）和静态数据区。</p>
+<h2 id="利用已存在的代码"><a href="#利用已存在的代码" class="headerlink" title="利用已存在的代码"></a>利用已存在的代码</h2><p>有时，代码已经在被攻击的程序中了，所要做的只是对代码传递一些参数。比如，攻击代码要求执行exec(/bin/sh)，而在libc库中的代码执行exec(arg)，其中arg 使一个指向一个字符串的指针参数，那么只要把传入的参数指针改为指向/bin/sh。</p>
+<h2 id="控制程序转移"><a href="#控制程序转移" class="headerlink" title="控制程序转移"></a>控制程序转移</h2><p>所有的这些方法都是在寻求改变程序的执行流程，使之跳转到攻击代码。最基本的就是溢出一个没有边界检查或者其它弱点的缓冲区，这样就扰乱了程序的正常的执行顺序。通过溢出一个缓冲区，那就可以直接用暴力的方法改写相邻的程序空间而直接跳过了系统的检查。分类的基准是攻击者所寻求的缓冲区溢出的程序空间类型。原则上是可以任意的空间。实际上，许多的缓冲区溢出是用暴力的方法来寻求改变程序指针的。这类程序的不同之处就是程序空间的突破和内存空间的定位不同。</p>
+<h2 id="活动纪录"><a href="#活动纪录" class="headerlink" title="活动纪录"></a>活动纪录</h2><p>每当一个函数调用发生时，调用者会在堆栈中留下一个活动纪录，它包含了函数结束时返回的地址。通过溢出堆栈中的自动变量，使返回地址指向攻击代码。通过改变程序的返回地址，当函数调用结束时，程序就跳转到设定好的地址，而不是原先的地址。这类的缓冲区溢出被称为堆栈溢出攻击，是最常用的缓冲区溢出攻击方式。</p>
+<h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><p>函数指针可以用来定位任何地址空间。<br>例如：void(*foo)() 声明了一个返回值为 void 的函数指针变量 foo。所以只需在任何空间内的函数指针附近找到一个能够溢出的缓冲区，然后溢出这个缓冲区来改变函数指针。在某一时刻，当程序通过函数指针调用函数时，程序的流程就背改变了。</p>
+<h2 id="代码植入和流程控"><a href="#代码植入和流程控" class="headerlink" title="代码植入和流程控"></a>代码植入和流程控</h2><p>最简单和常见的缓冲区溢出攻击类型就是在一个字符串里综合了代码植入和活动纪录技术。定位一个可供溢出的自动变量，然后向程序传递一个很大的字符串，在引发缓冲区溢出，改变活动纪录的同时植入了代码。代码植入和缓冲区溢出不一定要在在一次动作内完成。可以在一个缓冲区内放置代码，这是不能溢出的缓冲区。然后通过溢出另外一个缓冲区来转移程序的指针。这种方法一般用来解决可供溢出的缓冲区不够大的情况。如果试图使用已经常驻的代码而不是从外部植入代码，通常必须把代码作为参数调用。举例来说，在 libc 中的部分代码段会执行 exec(something)，其中 somthing 就是参数。然后使用缓冲区溢出改变程序的参数，然后利用另一个缓冲区溢出使程序指针指向 libc 中的特定的代码段。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>DNS | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="DNS," />
+  
+
+  <meta name="description" content="介绍域名系统（Domain Name System），可以将域名转换为 IP 地址。 历史DNS 最早于 1983 年由 Paul Mockapetris 发明；原始的技术规范在 RFC 882 中发布。1987 年发布的 1034 和 1035 号草案修正了 DNS 技术规范，并废除了之前的第 882 和 883 号草案。在此之后对因特网标准草案的修改基本上没有涉及到 DNS 技术规范部分的改动">
+<meta name="keywords" content="DNS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS">
+<meta property="og:url" content="https://hanxv.pw/2016/dns.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="介绍域名系统（Domain Name System），可以将域名转换为 IP 地址。 历史DNS 最早于 1983 年由 Paul Mockapetris 发明；原始的技术规范在 RFC 882 中发布。1987 年发布的 1034 和 1035 号草案修正了 DNS 技术规范，并废除了之前的第 882 和 883 号草案。在此之后对因特网标准草案的修改基本上没有涉及到 DNS 技术规范部分的改动">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DNS">
+<meta name="twitter:description" content="介绍域名系统（Domain Name System），可以将域名转换为 IP 地址。 历史DNS 最早于 1983 年由 Paul Mockapetris 发明；原始的技术规范在 RFC 882 中发布。1987 年发布的 1034 和 1035 号草案修正了 DNS 技术规范，并废除了之前的第 882 和 883 号草案。在此之后对因特网标准草案的修改基本上没有涉及到 DNS 技术规范部分的改动">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#历史"><span class="toc-text">历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#记录类型"><span class="toc-text">记录类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#技术实现"><span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名解析"><span class="toc-text">域名解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WHOIS"><span class="toc-text">WHOIS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-攻击"><span class="toc-text">DNS 攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-复位向"><span class="toc-text">DNS 复位向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP-欺骗"><span class="toc-text">ARP 欺骗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用-DNS-伺候器-DDOS"><span class="toc-text">利用 DNS 伺候器 DDOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-污染"><span class="toc-text">DNS 污染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-劫持"><span class="toc-text">DNS 劫持</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-dns" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">DNS</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.10.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>域名系统（Domain Name System），可以将域名转换为 IP 地址。</p>
+<h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><p>DNS 最早于 1983 年由 Paul Mockapetris 发明；原始的技术规范在 RFC 882 中发布。<br>1987 年发布的 1034 和 1035 号草案修正了 DNS 技术规范，并废除了之前的第 882 和 883 号草案。<br>在此之后对因特网标准草案的修改基本上没有涉及到 DNS 技术规范部分的改动。<br>早期的域名必须以英文句号“.”结尾，当访问 <code>hanxv.pw</code> 的 HTTP 服务时必须在地址栏中输入 <code>https://hanxv.pw.</code>，这样 DNS 才能够进行域名解析。<br>如今 DNS 伺候器已经可以自动补上结尾的句号。</p>
+<h1 id="记录类型"><a href="#记录类型" class="headerlink" title="记录类型"></a>记录类型</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">代码</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">IP 地址记录</td>
+</tr>
+<tr>
+<td style="text-align:center">AAAA</td>
+<td style="text-align:center">IPv6 IP 地址记录</td>
+</tr>
+<tr>
+<td style="text-align:center">AFSDB</td>
+<td style="text-align:center">AFS文件系统</td>
+</tr>
+<tr>
+<td style="text-align:center">APL</td>
+<td style="text-align:center">地址前缀列表</td>
+</tr>
+<tr>
+<td style="text-align:center">CERT</td>
+<td style="text-align:center">证书记录</td>
+</tr>
+<tr>
+<td style="text-align:center">CNAME</td>
+<td style="text-align:center">规范名称记录</td>
+</tr>
+<tr>
+<td style="text-align:center">DHCID</td>
+<td style="text-align:center">DHCP 标识符</td>
+</tr>
+<tr>
+<td style="text-align:center">DLV</td>
+<td style="text-align:center">DNSSEC 来源验证记录</td>
+</tr>
+<tr>
+<td style="text-align:center">DNAME</td>
+<td style="text-align:center">代表名称</td>
+</tr>
+<tr>
+<td style="text-align:center">DNSKEY</td>
+<td style="text-align:center">DNS 关键记录</td>
+</tr>
+<tr>
+<td style="text-align:center">DS</td>
+<td style="text-align:center">委托签发者</td>
+</tr>
+<tr>
+<td style="text-align:center">HIP</td>
+<td style="text-align:center">主机鉴定协议</td>
+</tr>
+<tr>
+<td style="text-align:center">IPSECKEY</td>
+<td style="text-align:center">IPSEC 密钥</td>
+</tr>
+<tr>
+<td style="text-align:center">KEY</td>
+<td style="text-align:center">关键记录</td>
+</tr>
+<tr>
+<td style="text-align:center">LOC</td>
+<td style="text-align:center">位置记录</td>
+</tr>
+<tr>
+<td style="text-align:center">MX</td>
+<td style="text-align:center">电邮交互记录</td>
+</tr>
+<tr>
+<td style="text-align:center">NAPTR</td>
+<td style="text-align:center">命名管理指针</td>
+</tr>
+<tr>
+<td style="text-align:center">NS</td>
+<td style="text-align:center">名称伺候器记录</td>
+</tr>
+<tr>
+<td style="text-align:center">NSEC</td>
+<td style="text-align:center">下一代安全记录</td>
+</tr>
+<tr>
+<td style="text-align:center">NSEC3</td>
+<td style="text-align:center">NSEC 记录第三版</td>
+</tr>
+<tr>
+<td style="text-align:center">NSEC3PARAM</td>
+<td style="text-align:center">NSEC3 参数</td>
+</tr>
+<tr>
+<td style="text-align:center">PTR</td>
+<td style="text-align:center">指针记录</td>
+</tr>
+<tr>
+<td style="text-align:center">RRSIG</td>
+<td style="text-align:center">DNSSEC 证书</td>
+</tr>
+<tr>
+<td style="text-align:center">RP</td>
+<td style="text-align:center">负责人</td>
+</tr>
+<tr>
+<td style="text-align:center">SIG</td>
+<td style="text-align:center">证书</td>
+</tr>
+<tr>
+<td style="text-align:center">SOA</td>
+<td style="text-align:center">权威记录的起始</td>
+</tr>
+<tr>
+<td style="text-align:center">SPF</td>
+<td style="text-align:center">SPF 记录</td>
+</tr>
+<tr>
+<td style="text-align:center">SRV</td>
+<td style="text-align:center">服务定位器</td>
+</tr>
+<tr>
+<td style="text-align:center">SSHFP</td>
+<td style="text-align:center">SSH 公共密钥指纹</td>
+</tr>
+<tr>
+<td style="text-align:center">TA</td>
+<td style="text-align:center">DNSSEC 信任当局</td>
+</tr>
+<tr>
+<td style="text-align:center">TKEY</td>
+<td style="text-align:center">秘密密钥记录</td>
+</tr>
+<tr>
+<td style="text-align:center">TSIG</td>
+<td style="text-align:center">交易证书</td>
+</tr>
+<tr>
+<td style="text-align:center">TXT</td>
+<td style="text-align:center">文本记录</td>
+</tr>
+<tr>
+<td style="text-align:center">AXFR</td>
+<td style="text-align:center">全局转移</td>
+</tr>
+<tr>
+<td style="text-align:center">IXFR</td>
+<td style="text-align:center">增量区域转移</td>
+</tr>
+<tr>
+<td style="text-align:center">OPT</td>
+<td style="text-align:center">选项</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">所有缓存的记录</td>
+</tr>
+</tbody>
+</table>
+<h1 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>DNS 通过允许一个名称伺候器把它的一部分名称服务“委托”给子伺候器而实现了一种层次结构的名称空间。<br>此外，DNS 还提供了一些额外的信息，例如系统别名、联系信息以及哪一个主机正在充当系统组或域的邮件枢纽。<br>任何一个使用 IP 的计算器网络可以使用DNS来实现它自己的私有名称系统。<br>尽管如此，当提到在公共的 Internet DNS 系统上实现的域名时，术语“域名”是最常使用的。<br>这是基于 504 个全球范围的“根域名伺候器”。<br>从这 504 个根伺候器开始，余下的 Internet DNS 命名空间被委托给其他的 DNS 伺候器，这些伺候器提供 DNS 名称空间中的特定部分。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>举个例子，<code>hanxv.pw</code> 作为一个域名就和 IP 地址 151.101.100.133 相对应。<br>DNS 就像是一个自动的电话号码簿，我们可以直接拨打 <code>hanxv.pw</code> 的名字来代替电话号码（IP 地址）。<br>DNS 查询有两种方式：递归和叠代。DNS 客户端设置使用的 DNS 伺候器一般都是递归伺候器，它负责全权处理客户端的 DNS 查询请求，直到返回最终结果。而 DNS 伺候器之间一般采用叠代查询方式。<br>以查询 <code>hanxv.pw</code> 为例：</p>
+<blockquote>
+<p>客户端发送查询报文 <code>query hanxv.pw</code> 至 DNS 伺候器，DNS 伺候器首先检查自身缓存，如果存在记录则直接返回结果。<br>如果记录老化或不存在，则 DNS 伺候器向根域名伺候器发送查询报文 <code>query hanxv.pw</code>，根域名伺候器返回 <code>.pw</code> 域的权威域名伺候器地址，这一级首先会返回的是顶级域名的权威域名伺候器。<br>DNS 伺候器向 <code>.pw</code> 域的权威域名伺候器发送查询报文 <code>query hanxv.pw</code>，得到主机的 A 记录，存入自身缓存并返回给客户端。</p>
+</blockquote>
+<h2 id="WHOIS"><a href="#WHOIS" class="headerlink" title="WHOIS"></a>WHOIS</h2><p>一个域名的所有者可以通过查询 WHOIS 数据库而被找到；对于大多数根域名伺候器，基本的 WHOIS 由 ICANN 维护，而 WHOIS 的细节则由控制那个域的域注册机构维护。<br>对于多个国家代码顶级域名（ccTLDs），通常由该域名权威注册机构负责维护 WHOIS。<br>例如：香港互联网注册管理有限公司（Hong Kong Internet Registration Corporation Limited）负责 <code>.HK</code> 域名的 WHOIS 维护。</p>
+<h1 id="DNS-攻击"><a href="#DNS-攻击" class="headerlink" title="DNS 攻击"></a>DNS 攻击</h1><p>##本机劫持<br>本机计算器系统被木马或流氓软件感染后，可能会出现部分域名的访问异常。如访问挂马或者钓鱼站点、无法访问。</p>
+<h2 id="DNS-复位向"><a href="#DNS-复位向" class="headerlink" title="DNS 复位向"></a>DNS 复位向</h2><p>将 DNS 名称查询复位向指定的 DNS 伺候器上,被劫持域名的解析就在攻击者的控制之下了。</p>
+<h2 id="ARP-欺骗"><a href="#ARP-欺骗" class="headerlink" title="ARP 欺骗"></a>ARP 欺骗</h2><p>通过伪造 IP 地址和 MAC 地址实现 ARP 欺骗，能够在网络中产生大量的 ARP 通信量使网络阻塞，只要持续不断的发出伪造的 ARP 响应包就能更改目标主机 ARP 缓存中的 IP-MAC 条目，造成网络中断或中间人攻击。<br>ARP 攻击主要是存在于局域网网络中，局域网中若有一台计算器感染 ARP 病毒，则感染该 ARP 病毒的系统将会试图通过”ARP 欺骗”手段截获所在网络内其它计算器的通信信息，并因此造成网内其它计算器的通信故障。</p>
+<h2 id="利用-DNS-伺候器-DDOS"><a href="#利用-DNS-伺候器-DDOS" class="headerlink" title="利用 DNS 伺候器 DDOS"></a>利用 DNS 伺候器 DDOS</h2><p>正常 DNS 伺候器递归查询过程可能被利用成 DDOS 攻击。假设攻击者已知被攻击机器的 IP 地址，然后使用该地址作为发送解析命令的源地址。<br>当 DNS 伺候器递归查询后，DNS 伺候器响应给最初用户，而这个用户正是被攻击者。如果控制了足够多的肉鸡，反复的进行如上操作，被攻击者就会受到来自于 DNS 伺候器的响应信息 DDOS 攻击。<br>拥有着足够多的肉鸡群，那么就可以使被攻击者的网络被拖垮至发生中断。</p>
+<h2 id="DNS-污染"><a href="#DNS-污染" class="headerlink" title="DNS 污染"></a>DNS 污染</h2><p>使用 DNS 请求，将数据放入一个具有漏洞的的 DNS 伺候器的缓存当中。<br>这些缓存信息会在客户进行 DNS 访问时返回给用户，从而造成 DNS 污染。</p>
+<h2 id="DNS-劫持"><a href="#DNS-劫持" class="headerlink" title="DNS 劫持"></a>DNS 劫持</h2><p>通过监听客户端和DNS伺候器的对话，可以猜测伺候器响应给客户端的 DNS 查询 ID。每个 DNS 报文包括一个相关联的 16 位 ID 号，DNS 伺候器根据这个 ID 号获取请求源位置。<br>在 DNS 伺候器之前将虚假的响应交给用户，从而造成 DNS 劫持。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

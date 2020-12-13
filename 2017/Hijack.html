@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>博客流量劫持 | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="HTTPS,HSTS,博客优化," />
+  
+
+  <meta name="description" content="之前博客放在 Github pages 上，一直都没什么问题。因为是静态，某些人没办法攻击了。今天朋友发来消息，告知博客被劫持了。看了看，发现是被 TCP 注入了，多了 30 个 .js ，Baidu、 Taobao 还有什么微商的广告。其实一直都在等 Github pages 更新自定义域名的 HTTPS 支持，可惜等不到了，必须得上 HTTPS 了。于是就直接更换为静态网站托管服务 Netli">
+<meta name="keywords" content="HTTPS,HSTS,博客优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客流量劫持">
+<meta property="og:url" content="https://hanxv.pw/2017/Hijack.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="之前博客放在 Github pages 上，一直都没什么问题。因为是静态，某些人没办法攻击了。今天朋友发来消息，告知博客被劫持了。看了看，发现是被 TCP 注入了，多了 30 个 .js ，Baidu、 Taobao 还有什么微商的广告。其实一直都在等 Github pages 更新自定义域名的 HTTPS 支持，可惜等不到了，必须得上 HTTPS 了。于是就直接更换为静态网站托管服务 Netli">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客流量劫持">
+<meta name="twitter:description" content="之前博客放在 Github pages 上，一直都没什么问题。因为是静态，某些人没办法攻击了。今天朋友发来消息，告知博客被劫持了。看了看，发现是被 TCP 注入了，多了 30 个 .js ，Baidu、 Taobao 还有什么微商的广告。其实一直都在等 Github pages 更新自定义域名的 HTTPS 支持，可惜等不到了，必须得上 HTTPS 了。于是就直接更换为静态网站托管服务 Netli">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Hijack" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">博客流量劫持</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>之前博客放在 Github pages 上，一直都没什么问题。因为是静态，某些人没办法攻击了。<br>今天朋友发来消息，告知博客被劫持了。看了看，发现是被 TCP 注入了，多了 30 个 .js ，Baidu、 Taobao 还有什么微商的广告。<br>其实一直都在等 Github pages 更新自定义域名的 HTTPS 支持，可惜等不到了，必须得上 HTTPS 了。<br>于是就直接更换为静态网站托管服务 Netlify 上了。</p>
+<p>Netlify 是一家提供静态网络托管服务的初创公司，旨在提升网页加载速度，提升用户网页访问体验。<br>支持自定义域名，支持 HTTPS，其免费计划中的节点也有许多，主要使用的是 Amazon 和 Google 家的服务器，在中国大陆访问较为良好的是 Amazon 家的日本和新加坡的节点。</p>
+<p>查阅 Netlify 文档的时候，发现可以自定义 SSL 证书。不过询问了一下，发现是我想多了。<br>他们的文档写的不是很详细，所以并没有指出免费计划不支持自定义 SSL 证书。<br>因为不想用 www 域，想直接使用裸域，所以问题就来了，使用裸域就意味着无法连接到距离更近的 CDN 节点。<br>无奈只能把 NS 换回 CloudXNS，想试试用不同的线路对裸域进行 CNAME 和 MX 解析。<br>不过可能是因为我在同步进行其它操作的原因，Netlify 上 Let’s Encrypt 验证失败。<br>因为懒，就直接放弃这种方法了。</p>
+<p>CloudXNS 有一个独有的私有类型 AX，可以填写优先级（即承担访问的百分比），单条 AX 记录与 A 记录效果一样。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">线路</th>
+<th style="text-align:center">记录值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">全网</td>
+<td style="text-align:center">1.2.3.4</td>
+</tr>
+<tr>
+<td style="text-align:center">AX</td>
+<td style="text-align:center">电信</td>
+<td style="text-align:center">5.6.7.8</td>
+</tr>
+<tr>
+<td style="text-align:center">AX</td>
+<td style="text-align:center">电信</td>
+<td style="text-align:center">9.10.11.12</td>
+</tr>
+</tbody>
+</table>
+<p>如这个表中所示，第一条记录解析到 Netlify 的负载均衡上，因为不解析到这个节点上，无法完成 Let’s Encrypt 的验证。<br>第二条和第三条则是 CDN 节点的 IP，AX 得填写优先级，即承担访问的百分比，随便设置即可。<br>当然你不设置 AX 直接设置 A 记录也是一样的。不过，为了避免某个节点出问题了，你网站的访客直接无法访问了，所以推荐使用 AX 记录。</p>
+<p>Netlify 似乎支持自动构建，不过因为需要本地调试，所以并没有使用这个功能，不过大家可以去试试。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

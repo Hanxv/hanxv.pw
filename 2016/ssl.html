@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>HTTP over SSL | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="HTTPS,HSTS,HTTP,SSL,TSL," />
+  
+
+  <meta name="description" content="关于 HTTPSHTTP超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议，所有的 WWW 文件都必须遵守这个标准，设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。简单点说，HTTP 就是一个网络协议，是专门用来帮妳传输 Web 内容的。 对称加密和非对称加密对称加密技术：加密和解密使用相同的密钥。比如使">
+<meta name="keywords" content="HTTPS,HSTS,HTTP,SSL,TSL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP over SSL">
+<meta property="og:url" content="https://hanxv.pw/2016/ssl.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="关于 HTTPSHTTP超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议，所有的 WWW 文件都必须遵守这个标准，设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。简单点说，HTTP 就是一个网络协议，是专门用来帮妳传输 Web 内容的。 对称加密和非对称加密对称加密技术：加密和解密使用相同的密钥。比如使">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP over SSL">
+<meta name="twitter:description" content="关于 HTTPSHTTP超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议，所有的 WWW 文件都必须遵守这个标准，设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。简单点说，HTTP 就是一个网络协议，是专门用来帮妳传输 Web 内容的。 对称加密和非对称加密对称加密技术：加密和解密使用相同的密钥。比如使">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于-HTTPS"><span class="toc-text">关于 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对称加密和非对称加密"><span class="toc-text">对称加密和非对称加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSL-TLS"><span class="toc-text">SSL/TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS"><span class="toc-text">HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启用-HTTPS"><span class="toc-text">启用 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启-HTTPS"><span class="toc-text">开启 HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启用-HSTS"><span class="toc-text">启用 HSTS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS-降级攻击"><span class="toc-text">HTTPS 降级攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#劫持-HTTPS-通信"><span class="toc-text">劫持 HTTPS 通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HSTS-简介"><span class="toc-text">HSTS 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HSTS-用途"><span class="toc-text">HSTS 用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HSTS-Preload-List"><span class="toc-text">HSTS Preload List</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于本站"><span class="toc-text">关于本站</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ssl" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">HTTP over SSL</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="关于-HTTPS"><a href="#关于-HTTPS" class="headerlink" title="关于 HTTPS"></a>关于 HTTPS</h1><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>超文本传输协议（HTTP，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议，所有的 WWW 文件都必须遵守这个标准，设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。简单点说，HTTP 就是一个网络协议，是专门用来帮妳传输 Web 内容的。</p>
+<h2 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h2><p>对称加密技术：加密和解密使用相同的密钥。比如使用 WinRAR 创建一个带密码的压缩包，下次要把这个解压的时候，需要输入同样的密码。</p>
+<p>非对称加密技术：加密和解密使用不同的密钥。比如使用密匙登陆 Linux 的之前，就得生成一对密钥，公钥（public key）和私钥（private key），私钥自己留着，公钥放到 Linux 主机内。使用这对密钥中的一个进行加密，而解密则需要另一个密钥。</p>
+<h2 id="SSL-TLS"><a href="#SSL-TLS" class="headerlink" title="SSL/TLS"></a>SSL/TLS</h2><p>SSL 是“Secure Sockets Layer”的缩写，中文叫安全套接层，它是在上世纪90年代中期，由网景公司（Netscape）设计的。</p>
+<p>互联网上使用的 HTTP 协议是明文的，存在很多缺点——比如传输内容会被偷窥（嗅探）和篡改，发明SSL协议，就是为了解决这些问题。</p>
+<p>1999 年，SSL 因为应用广泛，已经成为互联网上的事实标准，IETF 就在那年把 SSL 标准化，标准化之后的名称改为 TLS（Transport Layer Security），中文叫做“传输层安全协议”。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>通常所说的 HTTPS 协议，就是 HTTP 和 SSL/TLS 的组合。</p>
+<p>HTTPS（Hyper Text Transfer Protocol over Secure Socket Layer），即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</p>
+<p>它是一个 URI scheme（抽象标识符体系），句法类同 http: 体系，用于安全的 HTTP 数据传输。</p>
+<h1 id="启用-HTTPS"><a href="#启用-HTTPS" class="headerlink" title="启用 HTTPS"></a>启用 HTTPS</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>一个有控制权的域名</li>
+</ul>
+<p>因为颁发证书的时候，需要验证域名所有权，邮箱或者 CNAME 记录等。</p>
+<ul>
+<li>网站空间</li>
+</ul>
+<p>其实就是一个 VPS 或者一些类似于机箱这样支持 HTTPS 的空间，Gitlab Pages 也支持，Github Pages 不支持自定义域名的 HTTPS。</p>
+<ul>
+<li>证书</li>
+</ul>
+<p>现阶段有很多免费的证书了，不过付费的体验更加好。</p>
+<blockquote>
+<p>免费证书: Let’s Encrypt,StartSSL<br>付费证书: COMODO,DigiCert,Symantec</p>
+</blockquote>
+<ul>
+<li>Mixed Content</li>
+</ul>
+<p>HTTPS 网页中加载的 HTTP 资源被称之为 Mixed Content（混合内容），因此要避免这种情况的出现。把网站的 HTTP 资源链接都改成 HTTPS。</p>
+<h2 id="开启-HTTPS"><a href="#开启-HTTPS" class="headerlink" title="开启 HTTPS"></a>开启 HTTPS</h2><p>如果是 VPS 的话，就需要先安装 OpenSSL 了，只是空间的话，就可以在面板上直接添加证书了。</p>
+<h1 id="启用-HSTS"><a href="#启用-HSTS" class="headerlink" title="启用 HSTS"></a>启用 HSTS</h1><h2 id="HTTPS-降级攻击"><a href="#HTTPS-降级攻击" class="headerlink" title="HTTPS 降级攻击"></a>HTTPS 降级攻击</h2><p>HTTPS 通信过程</p>
+<ul>
+<li>客户端浏览器使用 HTTP 连接到端口80</li>
+<li>侍候器试用 HTTP 302 复位向到 HTTPS</li>
+<li>客户端连接到端口 443 的网站</li>
+<li>侍候器向客户端提供包含其电子签名的证书</li>
+<li>客户端获取该证书，并根据信任证书颁发机构列表来验证该证书</li>
+<li>加密通信建立</li>
+</ul>
+<h2 id="劫持-HTTPS-通信"><a href="#劫持-HTTPS-通信" class="headerlink" title="劫持 HTTPS 通信"></a>劫持 HTTPS 通信</h2><p>攻击从 HTTP 到 HTTPS 的这个网桥，SSL连接还未发生时的中间人攻击。</p>
+<ul>
+<li>客户端与 Web侍候器间的流量被拦截</li>
+<li>当遇到 HTTPS url 时，使用 HTTP 链接替换它</li>
+<li>攻击机模拟客户端向侍候器提供证书</li>
+<li>从安全网站收到流量提供给客户端</li>
+</ul>
+<p>这时候侍候器认为其仍然在接收 SSL 流量，侍候器无法辨别任何改变。用户可以感觉到是，浏览器中不会标记 HTTPS。</p>
+<h2 id="HSTS-简介"><a href="#HSTS-简介" class="headerlink" title="HSTS 简介"></a>HSTS 简介</h2><p>HSTS（HTTP Strict Transport Security）国际互联网工程组织 IETE 正在推行一种新的Web安全协议。</p>
+<h2 id="HSTS-用途"><a href="#HSTS-用途" class="headerlink" title="HSTS 用途"></a>HSTS 用途</h2><p>强制客户端使用HTTPS与侍候器创建连接，能够更有效的保护网站和用户的数据安全。</p>
+<h2 id="HSTS-Preload-List"><a href="#HSTS-Preload-List" class="headerlink" title="HSTS Preload List"></a>HSTS Preload List</h2><p>对于 HSTS 生效前的首次 HTTP 请求，依然无法避免被劫持。目前有两个方案可以解决，一个是将 HSTS 信息加入到域名系统记录中。但这需要保证 DNS 的安全性，也就是需要部署域名系统安全扩展。至今这一方案都没有大规模部署，国内就更不用说了。</p>
+<p>另一个就是 HSTS Preload List：内置一份可以定期更新的列表，对于列表中的域名，即使用户之前没有访问过，也会使用 HTTPS 协议。目前这个 Preload List 由 Google Chrome 维护，Chrome、Firefox、Safari 和 Microsoft Edge 都在使用。</p>
+<p>想把自己的域名加进这个列表，进入 <code>https://hstspreload.appspot.com/</code> 看看吧。</p>
+<h1 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h1><p>因为 Github Pages 还未支持自定义域名启用 HTTPS，所以并没有启用 HTTPS 更不用说 HSTS 了。</p>
+<p>而且因为本站的 <code>Robots.txt</code> 屏蔽了多数国内搜索引擎的 Spider，虽然它们不一定会准守，但博客是繁体写作的，多数国人看不懂繁体。</p>
+<p>如果访问本站出现问题了，就直接去 Github 里面看吧，Github 是启用了 HSTS 的。</p>
+<blockquote>
+<p><a href="../2017/Hijack.html">2017.02.28 更新</a></p>
+</blockquote>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

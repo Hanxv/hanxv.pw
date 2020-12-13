@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端学习 Linux | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Linux," />
+  
+
+  <meta name="description" content="Linux 体系组织结构Linux 有 kernel 和 user 两种模式，内核、shell 和文件系统统一形成基本的操作系统结构，Linux 内核由如下几部分组成：内存管理、进程管理、设备驱动程序、文件系统和网络管理等。 学习linux 内核知识的同时，不仅仅要了解原理，还要实际操作相关命令，使理论得到验证，这样就需要最基础的书籍来帮助更好的理解和学习Linux，建议《Linux 与Unix">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端学习 Linux">
+<meta property="og:url" content="https://hanxv.pw/2016/qdlinux.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="Linux 体系组织结构Linux 有 kernel 和 user 两种模式，内核、shell 和文件系统统一形成基本的操作系统结构，Linux 内核由如下几部分组成：内存管理、进程管理、设备驱动程序、文件系统和网络管理等。 学习linux 内核知识的同时，不仅仅要了解原理，还要实际操作相关命令，使理论得到验证，这样就需要最基础的书籍来帮助更好的理解和学习Linux，建议《Linux 与Unix">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端学习 Linux">
+<meta name="twitter:description" content="Linux 体系组织结构Linux 有 kernel 和 user 两种模式，内核、shell 和文件系统统一形成基本的操作系统结构，Linux 内核由如下几部分组成：内存管理、进程管理、设备驱动程序、文件系统和网络管理等。 学习linux 内核知识的同时，不仅仅要了解原理，还要实际操作相关命令，使理论得到验证，这样就需要最基础的书籍来帮助更好的理解和学习Linux，建议《Linux 与Unix">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-体系组织结构"><span class="toc-text">Linux 体系组织结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择-Linux-发行版"><span class="toc-text">选择 Linux 发行版</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#充分了解-Linux-文件系统"><span class="toc-text">充分了解 Linux 文件系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-qdlinux" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">前端学习 Linux</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="Linux-体系组织结构"><a href="#Linux-体系组织结构" class="headerlink" title="Linux 体系组织结构"></a>Linux 体系组织结构</h1><p>Linux 有 kernel 和 user 两种模式，内核、shell 和文件系统统一形成基本的操作系统结构，Linux 内核由如下几部分组成：内存管理、进程管理、设备驱动程序、文件系统和网络管理等。</p>
+<p>学习linux 内核知识的同时，不仅仅要了解原理，还要实际操作相关命令，使理论得到验证，这样就需要最基础的书籍来帮助更好的理解和学习Linux，建议《Linux 与Unix Shell 编程指南》。</p>
+<h1 id="选择-Linux-发行版"><a href="#选择-Linux-发行版" class="headerlink" title="选择 Linux 发行版"></a>选择 Linux 发行版</h1><p>Linux 发行版可以分为两类，一类是商业公司维护的发行版，一类是小区组织维护的发型版本，前者以著名的 Redhat(RHEL) 为代表，后者以 Debian 为代表。</p>
+<h1 id="充分了解-Linux-文件系统"><a href="#充分了解-Linux-文件系统" class="headerlink" title="充分了解 Linux 文件系统"></a>充分了解 Linux 文件系统</h1><p>Linux 最新的发行版默认都采用 ext4 格式作为默认文件系统，Linux 上面的文件类型主要包含下面几类：</p>
+<ul>
+<li><p>普通文件：分为纯文本和二进制</p>
+</li>
+<li><p>目录文件：存储文件地方</p>
+</li>
+<li><p>链接文件：指向同一个文件或目录的文件</p>
+</li>
+<li><p>分为块设备和字符设备</p>
+</li>
+<li><p>管道文件：提供进程间通信</p>
+</li>
+<li><p>套接字文件：与网络通信有关</p>
+</li>
+</ul>
+<p>Linux 使用标准的目录结构，安装程序的同时已经创建了文件系统和完整的目录组成形式，并指定了每个目录的作用和其中的文件类型。</p>
+<p>目录名简要说明：</p>
+<p><code>/bin</code> 二进制可执行命令</p>
+<p><code>/dev</code> 设备特殊文件</p>
+<p><code>/etc</code> 系统管理和配置文件</p>
+<p><code>/etc/rc.d</code> 启动配置文件和脚本</p>
+<p><code>/home</code> 用户主目录</p>
+<p><code>/bin</code> 标准程序设计库</p>
+<p><code>/sbin</code> 系统管理命令，存放的是系统管理员使用的命令或程序</p>
+<p><code>/tmp</code> 公用的临时文件存储路径</p>
+<p><code>/root</code> 系统管理员主目录</p>
+<p><code>/mnt</code> 系统提供这个目录让用户挂载其他的文件系统</p>
+<p><code>/lost+found</code> 这个目录默认是空的，当系统非正常关机的时候这个目录下会保留一些文件</p>
+<p><code>/proc</code> 虚拟目录，是系统内存的映像，可以通过直接访问这个目录来获取系统的相关信息</p>
+<p><code>/var</code> 特定大文件的溢出区，一般常用来存放各种服务的日志文件</p>
+<p><code>/usr</code> Linux系统最主要的目录，因为 Linux 的绝大多数服务和文件都存放在这个目录下</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
+<li><p>Linux 严格区分大小写</p>
+</li>
+<li><p>Linux 中所有的内容以文件形式保存，包括硬件</p>
+</li>
+<li><p>Linux不靠扩展名区分文件类型，但是我们常常加一些扩展名来区分文件。</p>
+</li>
+</ul>
+<blockquote>
+<p>压缩包 <code>.tar.bz2</code><br>脚本文件 <code>.sh</code><br>配置文件 <code>.conf</code></p>
+</blockquote>
+<ul>
+<li><p>Linux 所有的存储设备都必须挂载之后用户才可以使用，包括硬盘、U盘和光盘</p>
+</li>
+<li><p>远程伺候器不允许关机，只能重启。重启时应该关闭服务</p>
+</li>
+<li><p>合理分配权限</p>
+</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>论 ShadowSocks | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Shadowsocks," />
+  
+
+  <meta name="description" content="关于 ShadowSocks基本信息中文名: 影梭 英文名: Shadowsocks 原作者: Clowwindy 操作系统: 跨平台（基于客户端和远程服务器） 类型: 本地 Socks5 代理 许可协议: Apachev2，部分组件采用 GPLv3 或 LGPL 起源有一个叫 V2ex 的地方，有一位叫做 Clowwindy 的用户。她为了避免网络流量分类技术和 SSH Tunnel 的低效，自">
+<meta name="keywords" content="Shadowsocks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论 ShadowSocks">
+<meta property="og:url" content="https://hanxv.pw/2016/ShadowSocks.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="关于 ShadowSocks基本信息中文名: 影梭 英文名: Shadowsocks 原作者: Clowwindy 操作系统: 跨平台（基于客户端和远程服务器） 类型: 本地 Socks5 代理 许可协议: Apachev2，部分组件采用 GPLv3 或 LGPL 起源有一个叫 V2ex 的地方，有一位叫做 Clowwindy 的用户。她为了避免网络流量分类技术和 SSH Tunnel 的低效，自">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hanxv.pw/images/2016-9-20-1.jpg">
+<meta property="og:image" content="https://hanxv.pw/images/2016-9-20-2.jpg">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论 ShadowSocks">
+<meta name="twitter:description" content="关于 ShadowSocks基本信息中文名: 影梭 英文名: Shadowsocks 原作者: Clowwindy 操作系统: 跨平台（基于客户端和远程服务器） 类型: 本地 Socks5 代理 许可协议: Apachev2，部分组件采用 GPLv3 或 LGPL 起源有一个叫 V2ex 的地方，有一位叫做 Clowwindy 的用户。她为了避免网络流量分类技术和 SSH Tunnel 的低效，自">
+<meta name="twitter:image" content="https://hanxv.pw/images/2016-9-20-1.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于-ShadowSocks"><span class="toc-text">关于 ShadowSocks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本信息"><span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#起源"><span class="toc-text">起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行原理"><span class="toc-text">运行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全性"><span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#停止维护"><span class="toc-text">停止维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于-Shadowsocks-其它版本"><span class="toc-text">关于 Shadowsocks 其它版本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shadowsocks-的缺陷"><span class="toc-text">Shadowsocks 的缺陷</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一种独特技术"><span class="toc-text">一种独特技术</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ShadowSocks" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">论 ShadowSocks</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.08.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="关于-ShadowSocks"><a href="#关于-ShadowSocks" class="headerlink" title="关于 ShadowSocks"></a>关于 ShadowSocks</h1><h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>中文名: 影梭</p>
+<p>英文名: Shadowsocks</p>
+<p>原作者: Clowwindy</p>
+<p>操作系统: 跨平台（基于客户端和远程服务器）</p>
+<p>类型: 本地 Socks5 代理</p>
+<p>许可协议: Apachev2，部分组件采用 GPLv3 或 LGPL</p>
+<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>有一个叫 V2ex 的地方，有一位叫做 Clowwindy 的用户。她为了避免网络流量分类技术和 SSH Tunnel 的低效，自己写了一个用于加密流量的协议，并自用了一年多。</p>
+<p>后来，由于这个协议非常高效，而且使用 json 作为配置文件，配置起来非常方便，所以迅速赢得了很多用户，并在 V2ex 上有了一个专属的节点。</p>
+<p>Shadowsocks 迅速被移植到各种平台、各种语言，用户也急剧上升，并且有了专门经营 Shadowsocks 服务的商家。</p>
+<h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>Shadowsocks 的运行原理与其他代理工具基本相同，使用特定的中转服务器完成数据传输。</p>
+<p>在伺服端部署完成后，用户需要按照指定的密码、加密方式和端口使用客户端软件与其连接。在成功连接到服务器后，客户端会在用户的计算机上构建一个本地 Socks5 代理。</p>
+<p>浏览网络时，网络流量会被分到本地 Socks5 代理，客户端将其加密之后发送到服务器，服务器以同样的加密方式将流量回传给客户端，以此实现代理上网。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>Shadowsocks 使用自行设计的协议进行加密通信。</p>
+<p>加密算法有 AES、Blowfish、IDEA、RC4 等，除创建 TCP 连接外无需握手，每次请求只转发一个连接，因此使用起来网速较快，在移动设备上也比较省电。</p>
+<p>所有的流量都经过算法加密，允许自行选择算法，所以比较安全。</p>
+<p>Shadowsocks 通过异步 I/O 和事件驱动程序运行，响应速度快。</p>
+<p>客户端覆盖多个主流操作系统和平台，包括 Windows，OS X，Android 和 iOS 系统和路由器（OpenWrt）等。</p>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><p>然而 Shadowsocks 自行设计的加密协议对双方的身份验证仅限于预共享密钥，亦无完全前向保密，也未曾有安全专家公开分析或评估协议及其实现。</p>
+<p>Shadowsocks 不能替代TLS 或者VPN，本质上只是设置了密码的网络代理协议，不能用作匿名通信方案，该协议的目标不在于提供完整的通信安全机制，主要是为了协助上网用户在严苛的网络环境中突破封锁。</p>
+<p>在特定环境下，可以识别出协议特征。为了确保安全，用户应做好额外的加密和验证措施，以免泄露信息，无论使用的服务器来源是否可靠。</p>
+<p><img src="/images/2016-9-20-1.jpg" alt="Clowwindy 提示"></p>
+<h2 id="停止维护"><a href="#停止维护" class="headerlink" title="停止维护"></a>停止维护</h2><p>2015年8月22日，Clowwindy 在 GitHub 上称，警察在两日前要求他停止开发 Shadowsocks 并删除其所有代码。之后，作者停止维护 Shadowsocks，其 GitHub 页面已被清空。</p>
+<p><img src="/images/2016-9-20-2.jpg" alt="Clowwindy 被审查"></p>
+<p>消息传出后，许多中国和外国开发商，以及 Shadowsocks 用户，在 GitHub 中对作者表示了致谢，对项目加星标，因此在当时 Shadowsocks 成为了 GitHub 上的热门项目。</p>
+<p>但另据信指，原作者曾经透露中国社会现状的发言可能遭到某些中国政府支持者的检举，从而为后来被要求撤下项目源代码的事件埋下伏笔，而类似的因个人网络发言“不当”而被检举的事件在中国大陆也时有发生。</p>
+<p>8月25日，另一个用于突破网络审查的 GoAgent 项目也被作者自行删除。删除后几小时之内，GitHub 即遭到了来自中国的 DDoS 攻击。开发者普遍认为此次攻击与中国政府有关。</p>
+<p>2015年8月28日，电子前哨基金会针对 Shadowsocks 和 GoAgent 被删除一事发表评论，对中国政府针对翻墙软件作者的打击表示了强烈的谴责。</p>
+<p>尽管如此，Git 仓库的日志显示该项目被移除以前就有大量的复刻副本，不少副本仍然有用户维护。而且各大 Linux 包的软件仓库（apt-get、RHEL 等）均有远程代理程序及终端程序的更新以及供下载使用。</p>
+<h2 id="关于-Shadowsocks-其它版本"><a href="#关于-Shadowsocks-其它版本" class="headerlink" title="关于 Shadowsocks 其它版本"></a>关于 Shadowsocks 其它版本</h2><p>继 Shadowsocks 之后，诸多版本分支里面其中一个较为常见的版本是 ShadowsocksR ， 相比 Shadowsocks 在安全性和稳定性方面更胜一筹。</p>
+<p>但版本刚发布二进制可执行文件时因为不按照GPL 条款公开源代码而备受指责，后来在原作者及贡献参与者的压力下重新以GPLv3 条款开放源代码。</p>
+<h1 id="Shadowsocks-的缺陷"><a href="#Shadowsocks-的缺陷" class="headerlink" title="Shadowsocks 的缺陷"></a>Shadowsocks 的缺陷</h1><p>目前已知的缺陷来自于 ShadowsocksR 的作者 BreakWa11。 Shadowsocks 协议的TCP 连接部分，使用协议比较简单，在加密的时候，会根据加密算法在前面添加一些随机字节再进行加密，但同一个加密算法下，前面添加的随机字节的长度是固定的，所以表示地址类型的那个字节的位置是完全固定的。服务端为了判断数据是否有效，判断的依据就是表示地址类型的那个字节。如果通这个协议特征来进行探测、封杀服务器，或许就会是 Shadowsocks 的末日了。</p>
+<p>她的解决办法是，在原来的SS协议头，添加了一个包装。使用 CRC32 作为整个数据包的校验，增加主动探测的难度以及首包长度检测的难度。</p>
+<blockquote>
+<p>结构: 标志版本号|首包总长度|随机填充长度|随机填充数据|原ss首数据包|CRC32<br>注意，作者已经发现通过 CRC32 本身的缺陷可以破解这个，不过她已经有新的解决办法了</p>
+</blockquote>
+<p>目前情况下，GFW 已经开始对 Shadowsocks 下手了，对于特定的 IP 段进行检测，并开始不同程度的封杀。虽然 ShadowsocksR 的争议很大，但是它或许会成为 Shadowsocks 的接班人。</p>
+<h1 id="一种独特技术"><a href="#一种独特技术" class="headerlink" title="一种独特技术"></a>一种独特技术</h1><p>曾经在暗网上看到过一个人，她的解加密手段，实现起来并不难，但是如果使用的是她的算法，我觉得我会束手无策。</p>
+<p>如果她需要加密给一个客户端传输一个文件。首先服务器会给客户端传输一个文件，那个文件里面包含着一个加密过的文件（从源文件中生成，具体方式不清楚）和一个算法集（服务器根据客户端ID号生成的算法，那个ID号比密匙还长）。</p>
+<p>客户端收到文件之后，返回一个数据，然后就会利用客户端内置的解密算法（经过一定时间的研究，只研究出算法依据客户端ID和客户端安装的时间）对文件进行解密得出一个文件和一个算法集。然后会对那个算法集进行解密（客户端内置的算法，不过依据的时间是侍服器传输过来的时间），通过解密得到的算法集对那个文件进行解密。</p>
+<p>通过算法集解密得到的又会是一个文件（文件变的更大了），这时候，另一个服务器又会传输过来一个文件，只不过这次的文件和文件里面包含的那个算法集解密需要通过之前得到的那个算法集解密。后面的过程以此类推。</p>
+<p>可能这时候妳会认为，这种方式缺陷太多了。可普通家用的 I7 系计算机，在 100 Mbps 下进行这种工作，传输一个大小为 1 GB 的文件。从服务器第一次传输开始到妳完整的得到文件，只需要一分钟左右，也就是说比自己的网速还要快。然而服务器每次传输的文件大小只有 5 Mb 左右，对于网速的要求并不高。</p>
+<p>她所使用的算法，没有用到任何一种现阶段流行的算法（我一种都不认识，对比特征也毫无头绪），我对这种技术很感兴趣，但是这个算法我觉得我难以写出来，如果妳对这个感兴趣请给我发邮件。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>

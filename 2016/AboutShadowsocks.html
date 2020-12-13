@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于 Shadowsocks | Hanxv’s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Shadowsocks,ShadowsocksR,Breakwa11," />
+  
+
+  <meta name="description" content="继 Shadowsocks 之后，诸多版本分支里面其中一个较为常见的版本是 ShadowsocksR，相比 Shadowsocks 在安全性和稳定性方面更胜一筹。但版本刚发布二进制可执行文件时因为不按照 GPL 条款公开源代码而备受指责，后来在原作者及贡献参与者的压力下重新以 GPLv3 条款开放源代码。而在此之后，在很多小区群组里面只要讨论到 ShadowsocksR 就会有非常多的人身攻击 S">
+<meta name="keywords" content="Shadowsocks,ShadowsocksR,Breakwa11">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 Shadowsocks">
+<meta property="og:url" content="https://hanxv.pw/2016/AboutShadowsocks.html">
+<meta property="og:site_name" content="Hanxv’s Blog">
+<meta property="og:description" content="继 Shadowsocks 之后，诸多版本分支里面其中一个较为常见的版本是 ShadowsocksR，相比 Shadowsocks 在安全性和稳定性方面更胜一筹。但版本刚发布二进制可执行文件时因为不按照 GPL 条款公开源代码而备受指责，后来在原作者及贡献参与者的压力下重新以 GPLv3 条款开放源代码。而在此之后，在很多小区群组里面只要讨论到 ShadowsocksR 就会有非常多的人身攻击 S">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-12-13T15:22:54.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 Shadowsocks">
+<meta name="twitter:description" content="继 Shadowsocks 之后，诸多版本分支里面其中一个较为常见的版本是 ShadowsocksR，相比 Shadowsocks 在安全性和稳定性方面更胜一筹。但版本刚发布二进制可执行文件时因为不按照 GPL 条款公开源代码而备受指责，后来在原作者及贡献参与者的压力下重新以 GPLv3 条款开放源代码。而在此之后，在很多小区群组里面只要讨论到 ShadowsocksR 就会有非常多的人身攻击 S">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">寒</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">寒</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#可怜的人哪，你们连好坏是非都分不清楚，尝到甜，不知道是毒药，被人捧上天，却不知道是大祸临头。"><span class="toc-text">可怜的人哪，你们连好坏是非都分不清楚，尝到甜，不知道是毒药，被人捧上天，却不知道是大祸临头。</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-AboutShadowsocks" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">关于 Shadowsocks</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.30</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Hanxv</span>
+        </span>
+      
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>继 Shadowsocks 之后，诸多版本分支里面其中一个较为常见的版本是 ShadowsocksR，相比 Shadowsocks 在安全性和稳定性方面更胜一筹。<br>但版本刚发布二进制可执行文件时因为不按照 GPL 条款公开源代码而备受指责，后来在原作者及贡献参与者的压力下重新以 GPLv3 条款开放源代码。<br>而在此之后，在很多小区群组里面只要讨论到 ShadowsocksR 就会有非常多的人身攻击 ShadowsocksR 的作者 Breakwa11。其言语基本上都是辱骂 Breakwa11 不遵守协议。</p>
+<p>ShadowsocksR 和 Shadowsocks 一样一直在更新，没有停止维护，Shadowsocks 的分支现今似乎就只有 ShadowsocksR 一直在坚持下去。但现在大陆部分地区对 Shadowsocks 的干扰非常严重，使用 Shadowsocks 时会出现断流的情况越来越严重。这个情况使得 ShadowsocksR 的用户越来越多了。</p>
+<p>关于 Shadowsocks 和 ShadowsocksR 的作者，我并不了解，因为个人原因那几年并没有关注这些。不过，很多人骂 Breakwa11 的确看到不少。<br>在昨天，看到很多人在讨论 Breakwa11 将停止维护 ShadowsocksR。</p>
+<blockquote>
+<p>ShadowsocksR news:<br>今天我又哭了一次，我是边哭边写的这个公告。<br>首先，尽管我组建了ShadowsocksR这个组织，但组建了还不到两天，尽管我还计划了好多好多的点子去继续完善SSR，但很可能2017年你看不到更新了。<br>你可能看到了原版借用了SSR的idea，写出了非常相似的obfs，类型也是完全一致的，madeye也因此写了一篇博文，但通篇没有提及SSR，issue中他也从头到尾没有提及idea考虑来源。而与此同时，很多人非常支持libev这个功能，同时在骂SSR，甚至他也是原版参与开发者。<br>如此恶心的情况我不想再继续下去，背着骂名给原版提供好点子？我是人，是自私的人，我的点子被SS作者实现成这个破模样，被曲解意图那都是小事，模仿过去还要被骂一通，我这就难以理解了。<br>考虑到还有版权原因，为了停止如此荒唐的结果，我决定正式停止更新ShadowsocksR，之前我在twitter说的也许你觉得小说着玩，但这次，我既然是在这里发的话，就是想说我并不是说着玩，好聚好散吧。<br>感谢理解我的朋友，感谢关注我的朋友，能在2017年之前我的twitter就获得了一万fo，已经是对我的支持和鼓励了。</p>
+<p>Breakwa11<br>2016年12月29日</p>
+</blockquote>
+<p>作为一个第三方，站在理性的角度来看待这件事情。</p>
+<p>先说 ShadowsocksR 吧，Breakwa11 违反协议，但在指责下已经重新开源了。<br>而 Shadowsocks，不知是何原因，它的诸多用户在此事件过去很长时间之后，依旧一旦听到 ShadowsocksR 就会疯狂辱骂，在争论过程中大有 “PHP 是世界上最好的语言” 的趋势。<br>争论过程中，基本上都是支持 ShadowsocksR 的人完败，Shadowsocks 的 <em> 支持者 </em> 扬眉吐气。</p>
+<p>Breakwa11 在组建 ShadowsocksR 官方群组之后，这种情况少了许多。<br>因为 ShadowsocksR 用户都会去群组里面询问，避免了不少被 Shadowsocks 的 <em> 支持者 </em> 围攻的情况。</p>
+<p>不过，在几个月以前，一个我管理的群组里面也爆发了这种战争。有五六个人对 Shadowsocks 有着狂热的信仰，天生瞧不起 ShadowsocksR。为 ShadowsocksR 辩护的人很快就沉默了。<br>最后的结果是，我和另一个人一唱一和将那几个人堵得无言以对。这是我看到的这种争论中 ShadowsocksR 第一次完胜，当然这也是我第一次参与争论。</p>
+<p>在我之前看到的争论中，和那一次我参与争论的过程中，发现了一些有趣的特征。</p>
+<p>ShadowsocksR 的大多数支持者基本上不参与争论，就算很生气的在中途也会沉默。而 Shadowsocks 的 <em> 支持者 </em> 不骂得对手不说话绝不停休。</p>
+<blockquote>
+<p>争论的过程中其实很想问: 谁给你们的勇气和管理员对着来的？心中的信仰吗？</p>
+</blockquote>
+<p>参与争论的大多数人都不是网络小白，但也不是程序员，夹杂在两者之间。这样的人在网络中越来越多了。<br>在这样的人之中，言论越是像喷子之类的人参与争论的可能性越大。</p>
+<p>Shadowsocks 的 <em> 支持者 </em> 在进行争论的时候，其他的什么都不说，只抓住 ShadowsocksR 违反协议这一点不放。</p>
+<blockquote>
+<p>事实上，他们很多人都不知道协议是什么。只是知道 ShadowsocksR 违反了协议。</p>
+</blockquote>
+<p>ShadowsocksR 的支持者在争论中会渐渐沉默，不在继续这个话题。</p>
+<p>结果其实很简单。ShadowsocksR 犯错了，已经改过来了。但是还是有人说，你改过来了就能说没有这个事情了？ ( 你强奸了我，坐牢出来之后难道你就没强奸过我了？ )<br>ShadowsocksR 的作者从她的所作所为来看，已经是真的知道错了的迹象。重新开源，只是一个开头。在双方的支持者吵架的时候，按照正常情况下，只会越闹越大。但是 ShadowsocksR 参与此事的人越来越少，看到辱骂也都是不予理会。我相信，这个是 Breakwa11 的功劳。</p>
+<p>而 Shadowsocks 从 Clowwindy 的离开，Shadowsocks 更新出来的新功能都不尽人意。<br>Shadowsocks 的 <em> 支持者 </em> 经常和 ShadowsocksR 的支持者开启战场，但始终没有看到这两方中的人出来平息。<br>只能看到 ShadowsocksR 渐渐的隐匿了，而 Shadowsocks 依旧如此，亦有越演越烈的趋势。</p>
+<p>现在再处于感性的角度去看待这件事情，根据 ShadowsocksR 作者 Breakwa11 的自述，她是一个学经济管理的女生 ( 我没记错的话 )。<br>就算都是男人，也会用感性的角度去考虑，因为中国有一个成语叫做情有可原？</p>
+<p>Shadowsocks 看到 ShadowsocksR 的行为都很愤怒，纷纷出来指责 ShadowsocksR。这时候骂战开启了，站在这个角度来考虑，骂人情有可原。<br>ShadowsocksR 被骂了，明白是自己做错了，重新开源。</p>
+<p>Shadowsocks 在其事件过后，依旧追着 ShadowsocksR 骂。可能是一想到那件事心中的怒火就都喷发出来了，情有可原？<br>ShadowsocksR 在其事件过后，依旧被骂。安抚自己的用户，渐渐的平息战火。恩，当初错的是她，这么做，情有可原！</p>
+<p>结果其实很简单，真的。 ShadowsocksR 的确有错，但是一直在弥补。 Shadowsocks 呢？没看到有人出来平息。是不是有人故意引导的，也是未知。</p>
+<p>现在都好了，Breakwa11 一直弥补自己的错，直到 Shadowsocks 抄袭 ShadowsocksR 的想法，她也没有去要求 Shadowsocks 什么。<br>而 Shadowsocks 呢？我只觉得稳定性越来越差，从未解决过，不知道抄完了这个还没有下一个可以抄。</p>
+<h3 id="可怜的人哪，你们连好坏是非都分不清楚，尝到甜，不知道是毒药，被人捧上天，却不知道是大祸临头。"><a href="#可怜的人哪，你们连好坏是非都分不清楚，尝到甜，不知道是毒药，被人捧上天，却不知道是大祸临头。" class="headerlink" title="可怜的人哪，你们连好坏是非都分不清楚，尝到甜，不知道是毒药，被人捧上天，却不知道是大祸临头。"></a>可怜的人哪，你们连好坏是非都分不清楚，尝到甜，不知道是毒药，被人捧上天，却不知道是大祸临头。</h3>
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation"><a id="times"></a></span>
+    </div>
+  </div>
+
+
+   
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+    
+  
+
+  <script type="text/javascript">
+function loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}window.onload=function(){loadScript("/js/bundle.js?235683",function(){})};
+</script>
+</body>
+</html>
